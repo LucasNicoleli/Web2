@@ -39,8 +39,13 @@ app.get('/usuarios/:id', (req, res) => {
     usuario = usuarios.filter(u => u.id !== id)
     res.json({message: `Usuário com id ${id} 
         nome: ${id.nome} deletado com sucesso!`});
-
   })
+
+app.post('/usuarios', (req, res) => {
+    const cadastro_usuario = {id: usuarios.length + 1, nome: req.body.nome};
+    usuarios.push(cadastro_usuario)
+    res.status(201).json(cadastro_usuario);
+});
     
     
 
