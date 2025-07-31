@@ -2,9 +2,14 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const fs = require('fs');
+
 const readusuarios = () => {
     const data = fs.readFileSync('./usuarios.json')
     return JSON.parse(dados);
+ }
+
+ const writeUsuarios = () => {
+  fs.writeFileSync('./usuarios.json', JSON.stringify(usuarios, null, 2));
  }
 
 
@@ -43,9 +48,11 @@ app.get('/usuarios/:id', (req, res) => {
   })
 
 app.post('/usuarios', (req, res) => {
-    const cadastro_usuario = {id: usuarios.length + 1, nome: req.body.nome};
-    usuarios.push(cadastro_usuario)
-    res.status(201).json(cadastro_usuario);
+    const usuarios = readusuarios();
+    const novoUsuario = {
+        id: usuarios.length + 1,
+        nome: req.body.nome
+    }
 });
     
     
