@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const fs = require('fs');
+const readusuarios = () => {
+    const data = fs.readFileSync('./usuarios.json')
+    return JSON.parse(dados);
+ }
 
-let usuarios = [
-    { id: 1, nome: 'Celso' },
-    { id: 2, nome: 'Maria' },
-    { id: 3, nome: 'Carlos' },
-    { id: 4, nome: 'Ana Paula' },
-]
+
 
 app.use(express.json());
 
@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/usuarios', (req, res) => {
+  const usuarios = readusuarios();
   res.json(usuarios);
 });
 
