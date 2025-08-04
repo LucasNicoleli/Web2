@@ -1,15 +1,14 @@
-import UsuarioList from './components/UsuariosList';
+import React from 'react';
+import UsuariosList from './components/UsuariosList';
+import UsuariosForm from './components/UsuariosForm';
 
 function App() {
   
-
   return (
-    
     <div>
-      <h1> GERENCIAMENTO DE USUARIOS - UniSenai</h1>
-      <UsuarioList />
+      <UsuariosForm />
+      <UsuariosList />
     </div>
-
   );
 }
 
